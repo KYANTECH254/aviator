@@ -1,0 +1,1647 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aviator</title>
+    <link rel="icon" type="image/png" href="assets/images/favicon.png">
+    <link rel="stylesheet" href="assets/style.css">
+    <link rel="stylesheet" href="assets/responsive.css">
+    <link rel='stylesheet' href='assets/fonts/poppins/font.css'>
+    <link rel="stylesheet" href="assets/fonts/font-awesome/css/font-awesome.min.css">
+</head>
+
+<body>
+    <div id="loading-content" class="display-center">
+        <p>Connection...</p>
+    </div>
+    <div id="main-content">
+        <header class="aviator-heading">
+            <div class="aviator-heading-left">
+                <div class="aviator-heading-logo">
+                    <img src="assets/images/logo.png" alt="Aviator">
+                </div>
+                <div id="howtoplay-btn" class="aviator-heading-1">
+                    <i class="fa fa-question-circle-o" style="margin-right: 5px; font-size: 20px;" aria-hidden="true">
+                    </i>How to play?
+                </div>
+                <div id="howtoplay-mobbtn" class="aviator-mobheading-1">
+                    <i class="fa fa-question-circle-o" style="margin-right: 5px; font-size: 20px;" aria-hidden="true">
+                    </i>
+                </div>
+            </div>
+            <div class="aviator-heading-right">
+                <div class="aviator-heading-balance"><span id="balance"></span> <span class="aviator-heading-currency" id="currency"></span></div>
+                <div class="aviator-heading-separator">|</div>
+                <div class="aviator-heading-submenu-btn" type="button" id="toggle-submenu"><i class="fa fa-bars"
+                        aria-hidden="true"></i>
+                </div>
+                <div class="aviator-heading-separator">|</div>
+                <div class="aviator-heading-livechat" type="button" id="toggle-chatsection"><i class="fa fa-comments-o"
+                        aria-hidden="true"></i></div>
+            </div>
+            <div class="aviator-heading-submenu">
+                <div class="aviator-submenu-avatar">
+                    <div class="aviator-avatar-img">
+                        <img id="avatar" src="assets/images/avatar.png" alt="Avatar">
+                        <div class="aviator-submenu-username" id="username">2***6</div>
+                    </div>
+
+                    <div id="avatar-popup-btn" type="button" class="aviator-submenu-avatar-btn">
+                        <i class="fa fa-user-circle-o" aria-hidden="true"></i>
+                        <div class="aviator-submenu-avatar-text">Change Avatar</div>
+                    </div>
+                </div>
+                <div class="aviator-menu-section-1">
+                    <div class="aviator-menu-listitems">
+                        <div class="aviator-menu-item">
+                            <div class="aviator-menu-left-item">
+                                <i class="fa fa-volume-up aviator-van-icon" aria-hidden="true"></i>
+                                <div class="aviator-menu-left-item-text">Sound</div>
+                            </div>
+                            <div class="aviator-menu-right-item">
+                                <div class="toggle-switch">
+                                    <input type="checkbox" id="toggle1" />
+                                    <label for="toggle1" class="slider"></label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="aviator-submenu-item-separator"></div>
+                        <div class="aviator-menu-item">
+                            <div class="aviator-menu-left-item">
+                                <i class="fa fa-music aviator-van-icon" aria-hidden="true"></i>
+                                <div class="aviator-menu-left-item-text">Music</div>
+                                <audio id="myAudio" src="assets/audio/aviatormusic.mp3"></audio>
+                            </div>
+                            <div class="aviator-menu-right-item">
+                                <div class="toggle-switch">
+                                    <input type="checkbox" id="toggle2" />
+                                    <label for="toggle2" class="slider"></label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="aviator-submenu-item-separator"></div>
+                        <div class="aviator-menu-item">
+                            <div class="aviator-menu-left-item">
+                                <i class="fa fa-plane aviator-van-icon" aria-hidden="true"></i>
+                                <div class="aviator-menu-left-item-text">Animation</div>
+                            </div>
+                            <div class="aviator-menu-right-item">
+                                <div class="toggle-switch">
+                                    <input type="checkbox" id="toggle3" />
+                                    <label for="toggle3" class="slider"></label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="aviator-menu-section-separator"></div>
+                <div class="aviator-menu-section-2">
+                    <div class="aviator-menu-listitems">
+                        <div id="free-bets-btn" type="button" class="aviator-menu-item">
+                            <div class="aviator-menu-left-item">
+                                <i class="fa fa-star-o aviator-van-icon" aria-hidden="true"></i>
+                                <div class="aviator-menu-left-item-text">Free Bets</div>
+                            </div>
+                        </div>
+                        <div class="aviator-submenu-item-separator"></div>
+                        <div id="aviator-settings-btn" type="button" class="aviator-menu-item">
+                            <div class="aviator-menu-left-item">
+                                <i class="fa fa-cog aviator-van-icon" aria-hidden="true"></i>
+                                <div class="aviator-menu-left-item-text">Provably Fair Settings</div>
+                            </div>
+                        </div>
+                        <div class="aviator-submenu-item-separator"></div>
+                        <div id="aviator-rules-btn" class="aviator-menu-item" type="button">
+                            <div class="aviator-menu-left-item">
+                                <i class="fa fa-book aviator-van-icon" aria-hidden="true"></i>
+                                <div class="aviator-menu-left-item-text">Game Rules</div>
+                            </div>
+                        </div>
+                        <div class="aviator-submenu-item-separator"></div>
+                        <div id="aviator-bethistory-btn" class="aviator-menu-item" type="button">
+                            <div class="aviator-menu-left-item">
+                                <i class="fa fa-history aviator-van-icon" aria-hidden="true"></i>
+                                <div class="aviator-menu-left-item-text">My Bet History</div>
+                            </div>
+                        </div>
+                        <div class="aviator-submenu-item-separator"></div>
+                        <div id="aviator-gamelimits-btn" class="aviator-menu-item" type="button">
+                            <div class="aviator-menu-left-item">
+                                <i class="fa fa-money aviator-van-icon" aria-hidden="true"></i>
+                                <div class="aviator-menu-left-item-text">Game Limits</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="aviator-menu-section-bottom">
+                    <i class="fa fa-home" aria-hidden="true"></i>
+                    <div class="aviator-menu-section-bottom-text">Home</div>
+                </div>
+            </div>
+        </header>
+
+        <main class="aviator-objects">
+            <!-- Left Section Object -->
+            <section class="aviator-bets-section" id="aviator-bets-section">
+
+                <!-- Bets Section Main Header -->
+                <div class="aviator-bets-header">
+                    <div class="aviator-bets-sub-header active" id="live-bets-btn" type="button">All Bets</div>
+                    <div class="aviator-bets-sub-header" id="my-bets-btn" type="button">My Bets</div>
+                    <div class="aviator-bets-sub-header" id="top-bets-btn" type="button">Top</div>
+                </div>
+
+                <!-- All Bets Live Header -->
+                <div class="live-bets display-columns" id="live-bets">
+                    <div class="aviator-bets-second-header">
+                        <div class="aviator-bets-second-header-left">
+                            <div class="aviator-bets-second-header-left-title">ALL BETS</div>
+                            <div class="aviator-bets-second-header-left-title-2">8234</div>
+                        </div>
+                        <div class="aviator-bets-second-header-right">
+                            <div class="aviator-bets-second-header-right-btn">
+                                <i class="fa fa-history" aria-hidden="true"></i>
+                                Previous hand
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="aviator-bets-header-separator"></div>
+
+                    <!-- All Bets Header -->
+                    <div class="aviator-bets-third-header">
+                        <div class="aviator-bets-third-sub-header">User</div>
+                        <div class="aviator-bets-third-sub-header">Bet KES x</div>
+                        <div class="aviator-bets-third-sub-header">Cash out KES</div>
+                    </div>
+                </div>
+
+                <!-- My Bets Header -->
+                <div class="aviator-bets-third-header my-bets" id="my-bets">
+                    <div class="aviator-bets-third-sub-header">Date</div>
+                    <div class="aviator-bets-third-sub-header">Bet KES x</div>
+                    <div class="aviator-bets-third-sub-header">Cash out KES</div>
+                </div>
+
+                <!-- Top Bets Header -->
+                <div class="top-bets display-columns" id="top-bets">
+                    <div class="aviator-bets-wins-header">
+                        <div class="aviator-bets-wins-subheader subheader-active" id="huge-wins-btn" type="button">HUGE
+                            WINS
+                        </div>
+                        <div class="aviator-bets-wins-subheader" id="biggest-wins-btn" type="button">BIGGEST WINS</div>
+                        <div class="aviator-bets-wins-subheader" id="multipliers-btn" type="button">MULTIPLIERS</div>
+                    </div>
+
+                    <div class="aviator-bets-header">
+                        <div class="aviator-bets-sub-header active" id="day-bets-btn" type="button">Day</div>
+                        <div class="aviator-bets-sub-header" id="month-bets-btn" type="button">Month</div>
+                        <div class="aviator-bets-sub-header" id="year-bets-btn" type="button">Year</div>
+                    </div>
+
+                    <!-- Multipliers Header -->
+                    <div class="multipliers-header" id="multipliers-header">
+                        <div class="aviator-bets-third-header multipliers" id="multipliers">
+                            <div class="aviator-bets-third-sub-header">Date</div>
+                            <div class="aviator-bets-third-sub-header">X</div>
+                            <div class="aviator-bets-third-sub-header">Fairness</div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- All Bets -> Bet Item -->
+                <div class="live-bets display-columns" id="live-bets">
+                    <div class="aviator-bets-body">
+                        <div class="aviator-bet-item won">
+                            <div class="aviator-bets-body-left">
+                                <img class="aviator-bets-avatar" src="assets/images/avatar.png" alt="Avatar">
+                                <div class="aviator-bets-username">2***6</div>
+                            </div>
+                            <div class="aviator-bets-body-middle">
+                                <div class="aviator-bets-stake">2,000.00</div>
+                                <div class="aviator-bets-multiplier medium">5.00x</div>
+                            </div>
+                            <div class="aviator-bets-body-right">
+                                <div class="aviator-bets-cashout">10,0000</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- My Bets -> Bet Item -->
+                <div class="my-bets display-columns" id="my-bets">
+                    <div class="aviator-bets-body">
+                        <div class="aviator-bet-item won">
+                            <div class="aviator-bets-body-left-date">
+                                <div class="aviator-bets-datetime">13:03</div>
+                                <div class="aviator-bets-date">12-09-24</div>
+                            </div>
+                            <div class="aviator-bets-body-middle">
+                                <div class="aviator-bets-stake">2,000.00</div>
+                                <div class="aviator-bets-multiplier medium">5.00x</div>
+                            </div>
+                            <div class="aviator-bets-body-right">
+                                <div class="aviator-bets-cashout">10,000</div>
+                                <div class="aviator-bets-btns">
+                                    <i class="fa fa-comment-o" aria-hidden="true"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Top Bets -> Bet Item -->
+                <div class="top-bets display-columns" id="top-bets">
+
+                    <!-- Huge Bets Object -->
+                    <div class="huge-wins display-columns" id="huge-wins">
+
+                        <!-- Top Bets -> Huge Bet Item Daily -->
+                        <div class="daily-bets display-columns" id="daily-bets">
+                            <div class="aviator-bets-body daily-bets" id="daily-bets">
+
+                                <div class="aviator-top-bets">
+                                    <div class="aviator-top-bets-1">
+
+                                        <div class="aviator-top-bets-1-left">
+                                            <img class="aviator-userinfo-img" src="assets/images/avatar.png"
+                                                alt="Avatar">
+                                            <div class="aviator-userinfo-username">2***6</div>
+                                        </div>
+
+                                        <div class="aviator-top-bets-1-middle">
+                                            <div class="aviator-top-bets-1-middle-bet">Bet KES: <span
+                                                    class="top-bets-span">100</span></div>
+                                            <div class="aviator-top-bets-1-middle-cashout">Cashed out: <div
+                                                    class="aviator-bets-multiplier medium">5345.00x</div>
+                                            </div>
+                                            <div class="aviator-top-bets-1-middle-win">Win KES: <span
+                                                    class="top-bets-span">534,500</span></div>
+                                        </div>
+                                        <div class="aviator-top-bets-1-right">
+                                            <img src="assets/images/provablyfair.png" alt="Provably Fair">
+                                        </div>
+
+                                    </div>
+                                    <div class="aviator-top-bets-2">
+                                        <div class="aviator-top-bets-2-left">
+                                            <div class="aviator-top-bets-2-left-date">18 Sep</div>
+                                            <div class="aviator-top-bets-2-left-round">
+                                                Round: <span class="top-bets-span">1321.56</span>
+                                            </div>
+                                        </div>
+                                        <div class="aviator-top-bets-2-right">
+                                            <i class="fa fa-share" aria-hidden="true"></i>
+                                            <i class="fa fa-comment-o" aria-hidden="true"></i>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <!-- Top Bets -> Huge Bet Item Monthly -->
+                        <div class="monthly-bets display-columns" id="monthly-bets">
+                            <div class="aviator-bets-body">
+
+                                <div class="aviator-top-bets">
+                                    <div class="aviator-top-bets-1">
+
+                                        <div class="aviator-top-bets-1-left">
+                                            <img class="aviator-userinfo-img" src="assets/images/avatar.png"
+                                                alt="Avatar">
+                                            <div class="aviator-userinfo-username">2***6</div>
+                                        </div>
+
+                                        <div class="aviator-top-bets-1-middle">
+                                            <div class="aviator-top-bets-1-middle-bet">Bet KES: <span
+                                                    class="top-bets-span">10</span></div>
+                                            <div class=" aviator-top-bets-1-middle-cashout">Cashed out: <div
+                                                    class="aviator-bets-multiplier medium">20000.00x</div>
+                                            </div>
+                                            <div class="aviator-top-bets-1-middle-win">Win KES: <span
+                                                    class="top-bets-span">200,000</span></div>
+                                        </div>
+                                        <div class="aviator-top-bets-1-right">
+                                            <img src="assets/images/provablyfair.png" alt="Provably Fair">
+                                        </div>
+
+                                    </div>
+                                    <div class="aviator-top-bets-2">
+                                        <div class="aviator-top-bets-2-left">
+                                            <div class="aviator-top-bets-2-left-date">12 Sep</div>
+                                            <div class="aviator-top-bets-2-left-round">
+                                                Round: <span class="top-bets-span">33421.56</span>
+                                            </div>
+                                        </div>
+                                        <div class="aviator-top-bets-2-right">
+                                            <i class="fa fa-share" aria-hidden="true"></i>
+                                            <i class="fa fa-comment-o" aria-hidden="true"></i>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <!-- Top Bets -> Huge Bet Item Yearly -->
+                        <div class="yearly-bets display-columns" id="yearly-bets">
+                            <div class="aviator-bets-body">
+
+                                <div class="aviator-top-bets">
+                                    <div class="aviator-top-bets-1">
+
+                                        <div class="aviator-top-bets-1-left">
+                                            <img class="aviator-userinfo-img" src="assets/images/avatar.png"
+                                                alt="Avatar">
+                                            <div class="aviator-userinfo-username">2***6</div>
+                                        </div>
+
+                                        <div class="aviator-top-bets-1-middle">
+                                            <div class="aviator-top-bets-1-middle-bet">Bet KES: <span
+                                                    class="top-bets-span">10</span></div>
+                                            <div class=" aviator-top-bets-1-middle-cashout">Cashed out:
+                                                <div class="aviator-bets-multiplier large">150000.00x</div>
+                                            </div>
+                                            <div class="aviator-top-bets-1-middle-win">Win KES:
+                                                <span class="top-bets-span">1,500,000.60</span>
+                                            </div>
+                                        </div>
+                                        <div class="aviator-top-bets-1-right">
+                                            <img src="assets/images/provablyfair.png" alt="Provably Fair">
+                                        </div>
+
+                                    </div>
+                                    <div class="aviator-top-bets-2">
+                                        <div class="aviator-top-bets-2-left">
+                                            <div class="aviator-top-bets-2-left-date">21 Apr</div>
+                                            <div class="aviator-top-bets-2-left-round">
+                                                Round: <span class="top-bets-span">233335.00x</span>
+                                            </div>
+                                        </div>
+                                        <div class="aviator-top-bets-2-right">
+                                            <i class="fa fa-share" aria-hidden="true"></i>
+                                            <i class="fa fa-comment-o" aria-hidden="true"></i>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- Biggest Wins Object -->
+                    <div class="biggest-wins display-columns" id="biggest-wins">
+
+                        <!-- Top Bets -> Biggest Bet Item Daily -->
+                        <div class="daily-bets display-columns" id="daily-bets">
+                            <div class="aviator-bets-body">
+
+                                <div class="aviator-top-bets">
+                                    <div class="aviator-top-bets-1">
+
+                                        <div class="aviator-top-bets-1-left">
+                                            <img class="aviator-userinfo-img" src="assets/images/avatar.png"
+                                                alt="Avatar">
+                                            <div class="aviator-userinfo-username">2***6</div>
+                                        </div>
+
+                                        <div class="aviator-top-bets-1-middle">
+                                            <div class="aviator-top-bets-1-middle-bet">Bet KES: <span
+                                                    class="top-bets-span">10</span></div>
+                                            <div class=" aviator-top-bets-1-middle-cashout">Cashed out:
+                                                <div class="aviator-bets-multiplier large">150000.00x</div>
+                                            </div>
+                                            <div class="aviator-top-bets-1-middle-win">Win KES: <span
+                                                    class="top-bets-span">1,500,000.60</span></div>
+                                        </div>
+                                        <div class="aviator-top-bets-1-right">
+                                            <img src="assets/images/provablyfair.png" alt="Provably Fair">
+                                        </div>
+
+                                    </div>
+                                    <div class="aviator-top-bets-2">
+                                        <div class="aviator-top-bets-2-left">
+                                            <div class="aviator-top-bets-2-left-date">21 Apr</div>
+                                            <div class="aviator-top-bets-2-left-round">
+                                                Round: <span class="top-bets-span">233335.00x</span>
+                                            </div>
+                                        </div>
+                                        <div class="aviator-top-bets-2-right">
+                                            <i class="fa fa-share" aria-hidden="true"></i>
+                                            <i class="fa fa-comment-o" aria-hidden="true"></i>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Top Bets -> Biggest Bet Item Monthly -->
+                        <div class="monthly-bets display-columns" id="monthly-bets">
+                            <div class="aviator-bets-body">
+
+                                <div class="aviator-top-bets">
+                                    <div class="aviator-top-bets-1">
+
+                                        <div class="aviator-top-bets-1-left">
+                                            <img class="aviator-userinfo-img" src="assets/images/avatar.png"
+                                                alt="Avatar">
+                                            <div class="aviator-userinfo-username">2***6</div>
+                                        </div>
+
+                                        <div class="aviator-top-bets-1-middle">
+                                            <div class="aviator-top-bets-1-middle-bet">Bet KES: <span
+                                                    class="top-bets-span">20,000</span></div>
+                                            <div class=" aviator-top-bets-1-middle-cashout">Cashed out:
+                                                <div class="aviator-bets-multiplier large">75.00x</div>
+                                            </div>
+                                            <div class="aviator-top-bets-1-middle-win">Win KES: <span
+                                                    class="top-bets-span">1,500,000.60</span></div>
+                                        </div>
+                                        <div class="aviator-top-bets-1-right">
+                                            <img src="assets/images/provablyfair.png" alt="Provably Fair">
+                                        </div>
+
+                                    </div>
+                                    <div class="aviator-top-bets-2">
+                                        <div class="aviator-top-bets-2-left">
+                                            <div class="aviator-top-bets-2-left-date">21 Apr</div>
+                                            <div class="aviator-top-bets-2-left-round">
+                                                Round: <span class="top-bets-span">235.00x</span>
+                                            </div>
+                                        </div>
+                                        <div class="aviator-top-bets-2-right">
+                                            <i class="fa fa-share" aria-hidden="true"></i>
+                                            <i class="fa fa-comment-o" aria-hidden="true"></i>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Top Bets -> Biggest Bet Item Yearly -->
+                        <div class="yearly-bets display-columns" id="yearly-bets">
+                            <div class="aviator-bets-body">
+
+                                <div class="aviator-top-bets">
+                                    <div class="aviator-top-bets-1">
+
+                                        <div class="aviator-top-bets-1-left">
+                                            <img class="aviator-userinfo-img" src="assets/images/avatar.png"
+                                                alt="Avatar">
+                                            <div class="aviator-userinfo-username">2***6</div>
+                                        </div>
+
+                                        <div class="aviator-top-bets-1-middle">
+                                            <div class="aviator-top-bets-1-middle-bet">Bet KES: <span
+                                                    class="top-bets-span">20,000</span></div>
+                                            <div class=" aviator-top-bets-1-middle-cashout">Cashed out:
+                                                <div class="aviator-bets-multiplier large">75.00x</div>
+                                            </div>
+                                            <div class="aviator-top-bets-1-middle-win">Win KES: <span
+                                                    class="top-bets-span">1,500,000.60</span></div>
+                                        </div>
+                                        <div class="aviator-top-bets-1-right">
+                                            <img src="assets/images/provablyfair.png" alt="Provably Fair">
+                                        </div>
+
+                                    </div>
+                                    <div class="aviator-top-bets-2">
+                                        <div class="aviator-top-bets-2-left">
+                                            <div class="aviator-top-bets-2-left-date">21 Apr</div>
+                                            <div class="aviator-top-bets-2-left-round">
+                                                Round: <span class="top-bets-span">235.00x</span>
+                                            </div>
+                                        </div>
+                                        <div class="aviator-top-bets-2-right">
+                                            <i class="fa fa-share" aria-hidden="true"></i>
+                                            <i class="fa fa-comment-o" aria-hidden="true"></i>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+
+                    <!-- Multipliers Object -->
+                    <div class="multipliers display-columns" id="multipliers">
+                        <!-- Top Bets -> Multiplier Bet Item Daily -->
+                        <div class="daily-bets display-columns" id="daily-bets">
+                            <div class="aviator-multipliers-body">
+                                <div class="aviator-multiplier-body-left">
+                                    <div class="aviator-multiplier-body-left-date">19 Sep 08:35:52</div>
+                                    <div class="aviator-multiplier-body-left-multiplier">2455.77x</div>
+                                </div>
+                                <div class="aviator-multiplier-body-right">
+                                    <img src="assets/images/provablyfair.png" alt="Provably Fair">
+                                </div>
+                            </div>
+                            <div class="aviator-multipliers-body">
+                                <div class="aviator-multiplier-body-left">
+                                    <div class="aviator-multiplier-body-left-date">19 Sep 02:45:42</div>
+                                </div>
+                                <div class="aviator-multiplier-body-left-middle">
+                                    <div class="aviator-multiplier-body-left-multiplier">1055.77x</div>
+                                </div>
+                                <div class="aviator-multiplier-body-right">
+                                    <img src="assets/images/provablyfair.png" alt="Provably Fair">
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <!-- Top Bets -> Multiplier Bet Item Monthly -->
+                        <div class="monthly-bets display-columns" id="monthly-bets">
+                            <div class="aviator-multipliers-body">
+                                <div class="aviator-multiplier-body-left">
+                                    <div class="aviator-multiplier-body-left-date">11 Sep 08:35:52</div>
+                                    <div class="aviator-multiplier-body-left-multiplier">12455.77x</div>
+                                </div>
+                                <div class="aviator-multiplier-body-right">
+                                    <img src="assets/images/provablyfair.png" alt="Provably Fair">
+                                </div>
+                            </div>
+                            <div class="aviator-multipliers-body">
+                                <div class="aviator-multiplier-body-left">
+                                    <div class="aviator-multiplier-body-left-date">14 Sep 12:45:42</div>
+                                </div>
+                                <div class="aviator-multiplier-body-left-middle">
+                                    <div class="aviator-multiplier-body-left-multiplier">10055.77x</div>
+                                </div>
+                                <div class="aviator-multiplier-body-right">
+                                    <img src="assets/images/provablyfair.png" alt="Provably Fair">
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <!-- Top Bets -> Multiplier Bet Item Yearly -->
+                        <div class="yearly-bets display-columns" id="yearly-bets">
+                            <div class="aviator-multipliers-body">
+                                <div class="aviator-multiplier-body-left">
+                                    <div class="aviator-multiplier-body-left-date">02 Dec 18:35:52</div>
+                                    <div class="aviator-multiplier-body-left-multiplier">226455.77x</div>
+                                </div>
+                                <div class="aviator-multiplier-body-right">
+                                    <img src="assets/images/provablyfair.png" alt="Provably Fair">
+                                </div>
+                            </div>
+                            <div class="aviator-multipliers-body">
+                                <div class="aviator-multiplier-body-left">
+                                    <div class="aviator-multiplier-body-left-date">23 Aug 12:45:42</div>
+                                </div>
+                                <div class="aviator-multiplier-body-left-middle">
+                                    <div class="aviator-multiplier-body-left-multiplier">100055.77x</div>
+                                </div>
+                                <div class="aviator-multiplier-body-right">
+                                    <img src="assets/images/provablyfair.png" alt="Provably Fair">
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="aviator-bets-section-footer">
+                    <div class="aviator-bets-section-footer-left">
+                        This game is <img src="assets/images/provablyfair.png" alt="Provably Fair">
+                        <span class="aviator-bets-section-footer-left-text">
+                            Provably Fair
+                        </span>
+                    </div>
+                    <div class="aviator-bets-section-footer-right">
+                        Powered by
+                        <a href="https://kyantech.online" class="aviator-bets-section-footer-right-text">KYANTECH</a>
+                    </div>
+                </div>
+
+            </section>
+
+            <!-- Right Middle Section Object -->
+            <section class="aviator-betting-section" id="aviator-betting-section">
+
+                <!-- Round History -->
+                <div class="aviator-round-history">
+                    <div class="aviator-round-history-header-1">
+                        <div class="aviator-round-history-header-1-outcomes">
+                            <div id="round-history-btn" type="button"
+                                class="aviator-round-history-outcome aviator-bets-multiplier medium">4.02x</div>
+                            <div id="round-history-btn" type="button"
+                                class="aviator-round-history-outcome aviator-bets-multiplier medium">2.62x</div>
+                            <div id="round-history-btn" type="button"
+                                class="aviator-round-history-outcome aviator-bets-multiplier small">1.00x</div>
+                            <div id="round-history-btn" type="button"
+                                class="aviator-round-history-outcome aviator-bets-multiplier large">100.62x</div>
+                            <div id="round-history-btn" type="button"
+                                class="aviator-round-history-outcome aviator-bets-multiplier medium">4.02x</div>
+                            <div id="round-history-btn" type="button"
+                                class="aviator-round-history-outcome aviator-bets-multiplier medium">2.62x</div>
+                            <div id="round-history-btn" type="button"
+                                class="aviator-round-history-outcome aviator-bets-multiplier small">1.00x</div>
+                            <div id="round-history-btn" type="button"
+                                class="aviator-round-history-outcome aviator-bets-multiplier large">100.62x</div>
+                            <div id="round-history-btn" type="button"
+                                class="aviator-round-history-outcome aviator-bets-multiplier medium">4.02x</div>
+                            <div id="round-history-btn" type="button"
+                                class="aviator-round-history-outcome aviator-bets-multiplier medium">2.62x</div>
+                            <div id="round-history-btn" type="button"
+                                class="aviator-round-history-outcome aviator-bets-multiplier small">1.00x</div>
+                            <div id="round-history-btn" type="button"
+                                class="aviator-round-history-outcome aviator-bets-multiplier large">100.62x</div>
+                            <div id="round-history-btn" type="button"
+                                class="aviator-round-history-outcome aviator-bets-multiplier medium">4.02x</div>
+                            <div id="round-history-btn" type="button"
+                                class="aviator-round-history-outcome aviator-bets-multiplier medium">2.62x</div>
+                            <div id="round-history-btn" type="button"
+                                class="aviator-round-history-outcome aviator-bets-multiplier medium">4.02x</div>
+                            <div id="round-history-btn" type="button"
+                                class="aviator-round-history-outcome aviator-bets-multiplier medium">2.62x</div>
+                        </div>
+
+                        <div class="aviator-round-history-btn" type="button" id="open-round-history">
+                            <i class="fa fa-history" aria-hidden="true"></i>
+                            <i class="fa fa-arrow-circle-down" aria-hidden="true"></i>
+                        </div>
+                    </div>
+
+                    <div class="aviator-round-history-header-2">
+                        <div class="aviator-round-history-header-top">
+                            <div class="aviator-round-history-header-title">ROUND HISTORY</div>
+                            <div class="aviator-round-history-btn header-2" type="button" id="close-round-history">
+                                <i class="fa fa-history" aria-hidden="true"></i>
+                                <i class="fa fa-arrow-circle-up" aria-hidden="true"></i>
+                            </div>
+                        </div>
+                        <div class="aviator-round-history-header-bottom">
+                            <div id="round-history-btn" type="button"
+                                class="aviator-round-history-outcome aviator-bets-multiplier medium">4.02x</div>
+                            <div id="round-history-btn" type="button"
+                                class="aviator-round-history-outcome aviator-bets-multiplier medium">2.62x</div>
+                            <div id="round-history-btn" type="button"
+                                class="aviator-round-history-outcome aviator-bets-multiplier small">1.00x</div>
+                            <div id="round-history-btn" type="button"
+                                class="aviator-round-history-outcome aviator-bets-multiplier large">100.62x</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Aviator Animation Canvas -->
+                <div class="aviator-game-canva">
+                    <svg>
+                        <path id="trailPath" d="" />
+                        <path id="fillPath" d="" />
+                    </svg>
+                    <img id="plane" src="assets/images/plane.png"
+                        style="position: absolute; left: 35px; bottom: 35px; width: 120px; height: 60px;" alt="plane">
+                    <canvas height="230" width="820px" id="aviatorCanvas"></canvas>
+                    <div id="multiplier" class="multiplier"></div>
+                    <div id="aviator-static-plane" class="aviator-static-plane">
+                        <img id="aviator-static-plane" src="assets/images/plane.png" alt="Aviator Plane">
+                    </div>
+                    <div id="aviator-static-loader" class="aviator-static-loader">
+                        <img id="aviator-static-loader" src="assets/images/loader.gif" alt="Aviator Loader">
+                    </div>
+                    <div id="aviator-static-blue" class="exact-gradient-blue"></div>
+                    <div id="aviator-static-purple" class="exact-gradient-purple"></div>
+                    <div id="aviator-static-pink" class="exact-gradient-pink"></div>
+                </div>
+
+                <!-- Aviator Buttons Object -->
+                <div class="aviator-btns-container">
+
+                    <div id="aviator-btn-container-1" class="aviator-btn-container-1">
+
+                        <div class="aviator-btn-top-container">
+                            <div class="aviator-btn-top-container-btns">
+                                <div type="button" id="aviator-manual-bet-btn" class="aviator-bet-btn active">Bet</div>
+                                <div type="button" id="aviator-auto-bet-btn" class="aviator-bet-btn">Auto</div>
+                            </div>
+                            <div class="aviator-btn-top-right-container-btns">
+                                <div id="aviator-show-betobject" class="aviator-btn-top-container-option-add">+</div>
+                            </div>
+                        </div>
+                        <div class="aviator-btn-bottom-container">
+                            <div class="aviator-btn-bottom-container-left">
+                                <div class="aviator-bet-container">
+                                    <div type="button" class="minus-btn" id="minus-input1">-</div>
+                                    <input type="number" class="aviator-bet-input" id="input1" value="10.00">
+                                    <div type="button" class="plus-btn" id="plus-input1">+</div>
+                                </div>
+                                <div class="aviator-input-btn-container">
+                                    <div id="aviator-input-btn" class="aviator-input-btn" data-value="100.00">100.00
+                                    </div>
+                                    <div id="aviator-input-btn" class="aviator-input-btn" data-value="200.00">200.00
+                                    </div>
+                                </div>
+                                <div class="aviator-input-btn-container">
+                                    <div id="aviator-input-btn" class="aviator-input-btn" data-value="500.00">500.00
+                                    </div>
+                                    <div id="aviator-input-btn" class="aviator-input-btn" data-value="20000.00">
+                                        20,000.00
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="aviator-btn-bottom-container-right">
+                                <button type="button" class="aviator-betting-btn" id="button1">
+                                    <span class="aviator-bet-btn-text">BET</span>
+                                    <span id="aviator-bet-btn-amount" class="aviator-bet-btn-amount">10.00 KES</span>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div id="separator1" class="aviator-autobet-separator"></div>
+
+                        <div id="aviator-autobet-section1" class="aviator-auto-bet-container">
+                            <div class="aviator-autobet-btns">
+                                <div class="aviator-autobet-title">Auto Bet</div>
+                                <div class="toggle-switch">
+                                    <input type="checkbox" id="toggle4" />
+                                    <label for="toggle4" class="slider"></label>
+                                </div>
+                            </div>
+                            <div class="aviator-autocashout-btns">
+                                <div class="aviator-autocashout-title">Auto Cash Out</div>
+                                <div class="toggle-switch">
+                                    <input type="checkbox" id="toggle5" />
+                                    <label for="toggle5" class="slider"></label>
+                                </div>
+                                <div class="aviator-auto-multiplier-input">
+                                    <input type="text" id="aviator-auto-multiplier1" class="aviator-auto-multiplier"
+                                        value="1.10">
+                                    <button id="clear-input-btn1" class="aviator-auto-multiplier-clearinput"
+                                        type="button">&times;</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="aviator-bet-input2" class="aviator-btn-container-2">
+                        <div class="aviator-btn-top-container">
+                            <div class="aviator-btn-top-container-btns">
+                                <div type="button" id="aviator-manual-bet-btn2" class="aviator-bet-btn active">Bet</div>
+                                <div type="button" id="aviator-auto-bet-btn2" class="aviator-bet-btn">Auto</div>
+                            </div>
+                            <div class="aviator-btn-top-right-container-btns">
+                                <div id="aviator-hide-betobject" class="aviator-btn-top-container-option-minus">-</div>
+                            </div>
+                        </div>
+                        <div class="aviator-btn-bottom-container">
+                            <div class="aviator-btn-bottom-container-left">
+                                <div class="aviator-bet-container">
+                                    <div type="button" class="minus-btn" id="minus-input2">-</div>
+                                    <input type="number" class="aviator-bet-input" id="input2" value="10.00">
+                                    <div type="button" class="plus-btn" id="plus-input2">+</div>
+                                </div>
+
+                                <div class="aviator-input-btn-container">
+                                    <div id="aviator-input-btn2" class="aviator-input-btn" data-value="100.00">100.00
+                                    </div>
+                                    <div id="aviator-input-btn2" class="aviator-input-btn" data-value="200.00">200.00
+                                    </div>
+                                </div>
+                                <div class="aviator-input-btn-container">
+                                    <div id="aviator-input-btn2" class="aviator-input-btn" data-value="500.00">500.00
+                                    </div>
+                                    <div id="aviator-input-btn2" class="aviator-input-btn" data-value="20000.00">
+                                        20,000.00
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="aviator-btn-bottom-container-right">
+                                <button type="button" class="aviator-betting-btn" id="button2">
+                                    <span class="aviator-bet-btn-text">BET</span>
+                                    <span id="aviator-bet-btn-amount2" class="aviator-bet-btn-amount">10.00 KES</span>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div id="separator2" class="aviator-autobet-separator"></div>
+
+                        <div id="aviator-autobet-section2" class="aviator-auto-bet-container">
+                            <div class="aviator-autobet-btns">
+                                <div class="aviator-autobet-title">Auto Bet</div>
+                                <div class="toggle-switch">
+                                    <input type="checkbox" id="toggle6" />
+                                    <label for="toggle6" class="slider"></label>
+                                </div>
+                            </div>
+                            <div class="aviator-autocashout-btns">
+                                <div class="aviator-autocashout-title">Auto Cash Out</div>
+                                <div class="toggle-switch">
+                                    <input type="checkbox" id="toggle7" />
+                                    <label for="toggle7" class="slider"></label>
+                                </div>
+                                <div class="aviator-auto-multiplier-input">
+                                    <input type="text" id="aviator-auto-multiplier2" class="aviator-auto-multiplier"
+                                        value="1.10">
+                                    <button id="clear-input-btn2" class="aviator-auto-multiplier-clearinput"
+                                        type="button">&times;</button>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </section>
+
+            <!-- Right Chat Section Object -->
+            <section class="aviator-chat-section" id="aviator-chat-section">
+                <div class="aviator-chat-section-header display-center">
+                    <div class="live-users"><i class="fa fa-circle" aria-hidden="true"></i></div>
+
+                    4677
+                    <div class="display-right" id="close-chatsection" type="button"><i class="fa fa-times"
+                            aria-hidden="true"></i></div>
+
+                </div>
+                <div class="aviator-chat-section-body column">
+                    <div class="aviator-chat-item row">
+                        <div class="aviator-chat-user row colg1">
+                            <img src="assets/images/av-13.png" alt="Avatar">
+                            <div class="aviator-chat-username">2***8</div>
+                        </div>
+                        <div class="aviator-chat-message">
+                            🔥✅𝗞𝗨𝗝𝗔 𝗜𝗡𝗕𝗢𝗫 𝗡𝗜𝗞𝗨𝗣𝗘𝗘 𝗕𝗢𝗧 💥𝗡𝗔 𝗧𝗥𝗜𝗖𝗞𝗦💯💯O710. 564
+                            895✅️𝗣𝗔𝗬𝗠𝗘𝗡𝗧 𝗡𝗜 𝗔𝗙𝗧𝗘𝗥 𝗨𝗠𝗘𝗖𝗢𝗡𝗙𝗜𝗥𝗠 𝗜𝗡𝗔𝗙𝗔𝗡𝗬𝗔
+                        </div>
+                        <div type="button" class="aviator-chat-btns">
+                            <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="aviator-chat-section-footer">
+                    <input type="text" class="aviator-reply-input" id="" placeholder="Reply">
+                </div>
+            </section>
+
+        </main>
+
+        <!-- Avatar Pop Up -->
+        <div id="aviator-avatar-tab" class="aviator-popup-container">
+            <div class="aviator-avatar-popup">
+                <div class="aviator-popup-header">
+                    <div class="aviator-popup-header-left">CHOOSE GAME AVATAR</div>
+                    <div id="aviator-avatar-popup-close" class="aviator-popup-header-right"><i class="fa fa-times"
+                            aria-hidden="true"></i></div>
+                </div>
+                <div class="aviator-avatar-popup-body">
+                    <div id="avatarContainer">
+                    </div>
+                </div>
+                <div class="aviator-avatar-popup-footer">
+                    <div id="aviator-avatar-popup-close" class="aviator-popup-closebtn" type="button">Close</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Rounds Pop Up -->
+        <div id="aviator-rounds-tab" class="aviator-popup-container">
+            <div class="aviator-rounds-popup">
+                <div class="aviator-popup-header">
+                    <div class="aviator-popup-left row colg1">
+                        <div class="aviator-popup-header-left">ROUND 14567</div>
+                        <div class="aviator-bets-multiplier large">59.46x</div>
+                        <div class="aviator-popup-header-timestamp">16:14:01</div>
+                    </div>
+                    <div id="aviator-rounds-popup-close" class="aviator-popup-header-right"><i class="fa fa-times"
+                            aria-hidden="true"></i>
+                    </div>
+                </div>
+
+                <div id="rounds-tab" class="aviator-rounds-popup-body">
+                    <div class="aviator-popup-rounds-body-section1 column">
+                        <div class="aviator-popup-rounds-body-section1-top row colg1">
+                            <div class="aviator-popup-rounds-body-section1-left">
+                                <img src="assets/images/server.png" alt="Server">
+                            </div>
+                            <div class="aviator-popup-rounds-body-section1-right column">
+                                <div class="aviator-popup-rounds-body-section1-right-top">Server Seed:</div>
+                                <div class="aviator-popup-rounds-body-section1-right-bottom">Generated on our Side</div>
+                            </div>
+                        </div>
+                        <div class="black-bg-popup-box">
+                            qZ7X6t3PIRPNFlUK5mw2unTob08JZi9pg94RLexu
+                        </div>
+
+                    </div>
+                    <div class="aviator-popup-rounds-body-section2 column">
+                        <div class="aviator-popup-rounds-body-section2-top row colg1">
+                            <div class="aviator-popup-rounds-body-section2-left">
+                                <img src="assets/images/client.png" alt="Client">
+                            </div>
+                            <div class="aviator-popup-rounds-body-section2-right column">
+                                <div class="aviator-popup-rounds-body-section2-right-top">Client Seed:</div>
+                                <div class="aviator-popup-rounds-body-section2-right-bottom">Generated on players side
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="black-bg-popup-box">
+                            <div class="black-bg-popup-box-top row">
+                                <div class="black-bg-popup-box-top-left">Player N1:</div>
+                                <div class="black-bg-popup-box-right row">
+                                    <img src="assets/images/av-10.png" alt="Avatar">
+                                    <div class="black-bg-popup-box-right-text">2***1</div>
+                                </div>
+                            </div>
+                            <div class="black-bg-popup-box-bottom row">
+                                <div class="black-bg-popup-box-bottom-left">Seed:</div>
+                                <div class="black-bg-popup-box-right">dSnNtByPNA8YbCoKeKWg</div>
+                            </div>
+                        </div>
+                        <div class="black-bg-popup-box">
+                            <div class="black-bg-popup-box-top row">
+                                <div class="black-bg-popup-box-top-left">Player N2:</div>
+                                <div class="black-bg-popup-box-right row">
+                                    <img src="assets/images/av-12.png" alt="Avatar">
+                                    <div class="black-bg-popup-box-right-text">2***4</div>
+                                </div>
+                            </div>
+                            <div class="black-bg-popup-box-bottom row">
+                                <div class="black-bg-popup-box-bottom-left">Seed:</div>
+                                <div class="black-bg-popup-box-right">dSnNtByPNA8YbCoKeKWg</div>
+                            </div>
+                        </div>
+                        <div class="black-bg-popup-box">
+                            <div class="black-bg-popup-box-top row">
+                                <div class="black-bg-popup-box-top-left">Player N3:</div>
+                                <div class="black-bg-popup-box-right row">
+                                    <img src="assets/images/av-63.png" alt="Avatar">
+                                    <div class="black-bg-popup-box-right-text">2***6</div>
+                                </div>
+                            </div>
+                            <div class="black-bg-popup-box-bottom row">
+                                <div class="black-bg-popup-box-bottom-left">Seed:</div>
+                                <div class="black-bg-popup-box-right">dSnNtByPNA8YbCoKeKWg</div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="aviator-popup-rounds-body-section3 column">
+                        <div class="aviator-popup-rounds-body-section3-top row colg1">
+                            <div class="aviator-popup-rounds-body-section3-left">
+                                <img src="assets/images/SHA512.png" alt="SHA512 Hash">
+                            </div>
+                            <div class="aviator-popup-rounds-body-section3-right column">
+                                <div class="aviator-popup-rounds-body-section3-right-top">Combined SHA512 Hash:</div>
+                                <div class="aviator-popup-rounds-body-section3-right-bottom">Above seed combined and
+                                    converted to SHA512 Hash. This is your game result</div>
+                            </div>
+                        </div>
+                        <div class="black-bg-popup-box">
+                            344adef4175307476dc0b6bb9fbba5ff0ca9e2671e3f5335c017621c47373c6873b2c0cd6cf4dc067d75a2648131c6247f0ea1c55bc415973be0583551200827
+                        </div>
+
+                    </div>
+
+                    <div class="aviator-popup-rounds-body-section4 column">
+                        <div class="aviator-popup-rounds-body-section4-top row display-center">
+                            <div class="aviator-popup-rounds-body-section4-item display-center">Hex:</div>
+                            <div class="aviator-popup-rounds-body-section4-item display-center">Decimal:</div>
+                            <div class="aviator-popup-rounds-body-section4-item display-center">Result:</div>
+                        </div>
+                        <div class="black-bg-popup-box  display-center">
+                            <div class="aviator-popup-rounds-body-section4-bottom-item display-center">8dbc899c94c09
+                            </div>
+                            <div class="aviator-popup-rounds-body-section4-bottom-item display-center">2493454433733641
+                            </div>
+                            <div class="aviator-popup-rounds-body-section4-bottom-item display-center">8.25</div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="aviator-rounds-popup-footer colg1">
+                    For Instructions check
+                    <div type="button" id="provably-rounds-btn">What is Provably Fair</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Free Bets Pop Up -->
+        <div id="aviator-freebets-tab" class="aviator-popup-container">
+            <div class="aviator-freebets-popup">
+                <div class="aviator-popup-header">
+                    <div class="aviator-popup-header-left">FREE BETS MANAGEMENT</div>
+                    <div id="aviator-popup-close" class="aviator-popup-header-right"><i class="fa fa-times"
+                            aria-hidden="true"></i></div>
+                </div>
+                <div id="free-bets-tab" class="aviator-popup-freebets-body">
+                    <label class="custom-checkbox">
+                        <input type="checkbox" id="checkbox">
+                        <span class="checkmark"><i class="fa fa-circle" aria-hidden="true"></i></span>
+                        Play with cash
+                    </label>
+
+                    <div class="aviator-popup-freebets-body-container">
+                        <div class="aviator-freebets-top-body">
+                            <div class="aviator-popup-freebets-body-container-left">ACTIVE FREE BETS</div>
+                            <div class="aviator-popup-freebets-body-container-right">
+                                <div id="freebets-archive-btn" class="aviator-popup-freebets-body-container-right-btn">
+                                    <i class="fa fa-history" aria-hidden="true"></i>
+                                    Archive
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="aviator-popup-freebets-body-container-bottom">
+                            <img src="assets/images/freebets.png" alt="Free Bets">
+                            <div class="aviator-popup-freebets-body-container-bottom-text">
+                                No Active Free Bets. Yet!
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="freebets-archive-tab" class="aviator-freebets-archive">
+                    <div class="aviator-freebets-archive-header">
+                        <div class="aviator-freebets-archive-header-text">Archive</div>
+                        <div type="button" id="freebets-archive-backbtn" class="aviator-freebets-archive-header-btn">
+                            <i class="fa fa-times" aria-hidden="true"></i>
+                            Back
+                        </div>
+
+                    </div>
+                    <div class="aviator-freebets-archive-body">
+                        <img src="assets/images/freebets.png" alt="Free Bets">
+                        <div class="aviator-freebets-archive-body-text">
+                            Nothing yet
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- How to Play Pop up -->
+        <div id="aviator-howtoplay-tab" class="aviator-popup-container">
+            <div class="aviator-howtoplay-popup">
+                <div class="aviator-howtoplay-popup-header">
+                    <div class="aviator-howtoplay-popup-header-left">HOW TO PLAY?</div>
+                    <div id="aviator-howtoplay-popup-close" class="aviator-howtoplay-popup-header-right">
+                        <i class="fa fa-times" aria-hidden="true"></i>
+                    </div>
+                </div>
+                <div class="aviator-popup-howtoplay-body">
+                    <!-- <iframe width="100%" height="432"
+                 src="https://www.youtube.com/embed/PZejs3XDCSY"
+                    title="Spribe Aviator - How to play?" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
+                </iframe> -->
+                    <img src="assets/images/howtoplay.png" alt="How To Play">
+                </div>
+                <div class="aviator-howtoplay-popup-footer">
+                    <div id="aviator-howtoplay-detailed" class="aviator-popup-howtoplay-detailed" type="button">detailed
+                        rules</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Game Limits Pop up -->
+        <div id="aviator-gamelimits-tab" class="aviator-popup-container">
+            <div class="aviator-gamelimits-popup">
+                <div class="aviator-popup-header">
+                    <div class="aviator-popup-header-left">GAME LIMITS</div>
+                    <div id="aviator-gamelimits-popup-close" class="aviator-popup-header-right">
+                        <i class="fa fa-times" aria-hidden="true"></i>
+                    </div>
+                </div>
+                <div class="aviator-popup-gamelimits-body">
+                    <div class="aviator-gamelimits-bodycontainer">
+                        <div class="aviator-gamelimits-bodycontainer-top">
+                            <div class="aviator-gamelimits-bodycontainer-right">Minimum bet KES: </div>
+                            <div class="aviator-gamelimits-bodycontainer-left">10.00</div>
+                        </div>
+                        <div class="aviator-gamelimits-bodycontainer-middle">
+                            <div class="aviator-gamelimits-bodycontainer-right">Maximum bet KES:</div>
+                            <div class="aviator-gamelimits-bodycontainer-left">20,000.00</div>
+                        </div>
+                        <div class="aviator-gamelimits-bodycontainer-bottom">
+                            <div class="aviator-gamelimits-bodycontainer-right">Maximum win for one bet KES:</div>
+                            <div class="aviator-gamelimits-bodycontainer-left">1,500,000.00</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- My Bet History Pop up -->
+        <div id="aviator-bethistory-tab" class="aviator-popup-container">
+            <div class="aviator-gamelimits-popup">
+                <div class="aviator-popup-header">
+                    <div class="aviator-popup-header-left">MY BET HISTORY</div>
+                    <div id="aviator-bethistory-popup-close" class="aviator-popup-header-right">
+                        <i class="fa fa-times" aria-hidden="true"></i>
+                    </div>
+                </div>
+                <div class="aviator-popup-bethistory-body">
+                    <div class="aviator-bets-third-header">
+                        <div class="aviator-bets-third-sub-header">User</div>
+                        <div class="aviator-bets-third-sub-header">Bet KES x</div>
+                        <div class="aviator-bets-third-sub-header">Cash out KES</div>
+                    </div>
+                    <div class="aviator-bet-item won">
+                        <div class="aviator-bets-body-left-date">
+                            <div class="aviator-bets-datetime">13:03</div>
+                            <div class="aviator-bets-date">12-09-24</div>
+                        </div>
+                        <div class="aviator-bets-body-middle">
+                            <div class="aviator-bets-stake">2,000.00</div>
+                            <div class="aviator-bets-multiplier medium">5.00x</div>
+                        </div>
+                        <div class="aviator-bets-body-right">
+                            <img src="assets/images/provablyfair.png" alt="Provably Fair">
+                            <div class="aviator-bets-btns">
+                                <i class="fa fa-comment-o" aria-hidden="true"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="aviator-bet-item">
+                        <div class="aviator-bets-body-left-date">
+                            <div class="aviator-bets-datetime">13:03</div>
+                            <div class="aviator-bets-date">12-09-24</div>
+                        </div>
+                        <div class="aviator-bets-body-middle">
+                            <div class="aviator-bets-stake">2,000.00</div>
+                            <div class="aviator-bets-multiplier medium">5.00x</div>
+                        </div>
+                        <div class="aviator-bets-body-right">
+                            <img src="assets/images/provablyfair.png" alt="Provably Fair">
+                            <div class="aviator-bets-btns">
+                                <i class="fa fa-comment-o" aria-hidden="true"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="aviator-bethistory-popup-footer">
+                    <div id="aviator-bethistory-loadmore" class="aviator-bethistory-loadbtn" type="button">Load more
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Game Rules Pop up -->
+        <div id="aviator-rules-tab" class="aviator-popup-container">
+            <div class="aviator-rules-popup">
+                <div class="aviator-popup-header">
+                    <div class="aviator-popup-header-left">GAME RULES</div>
+                    <div id="aviator-rules-popup-close" class="aviator-popup-header-right"><i class="fa fa-times"
+                            aria-hidden="true"></i></div>
+                </div>
+                <div class="aviator-rules-popup-body">
+                    <div class="aviator-rules-text">
+                        Aviator is a new generation of iGaming entertainment. You can win many times more, in seconds!
+                        Aviator is built on a provably fair system, which is currently the only real guarantee of
+                        honesty in
+                        the gambling industry.
+                    </div>
+                    <div class="aviator-provably-link">
+                        <a href="https://aviator-next.spribegaming.com/#"> Read more about provably fair system </a>
+                    </div>
+                    <div class="aviator-rules-heading">
+                        HOW TO PLAY
+                    </div>
+                    <!-- <iframe width="100%" height="432" 
+                src="https://www.youtube.com/embed/PZejs3XDCSY"
+                    title="Spribe Aviator - How to play?" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
+                </iframe> -->
+                    <div class="aviator-rules-heading mt4 mb2">
+                        Aviator is as easy to play as 1-2-3:
+                    </div>
+                    <div class="aviator-rules-img">
+                        <img src="assets/images/1step.png" alt="Steps">
+                        <img src="assets/images/2step.png" alt="Steps">
+                        <img src="assets/images/3step.png" alt="Steps">
+                    </div>
+                    <div class="aviator-rules-text mt2 mb3">
+                        But remember, if you did not have time to Cash Out before the Lucky Plane flies away, your bet
+                        will
+                        be lost. Aviator is pure excitement! Risk and win. It’s all in your hands!
+                    </div>
+                    <div class="aviator-rules-heading">
+                        More details
+                    </div>
+                    <div class="aviator-paragraph-text">
+                        <div class="aviator-paragraph-sentence">
+                            <i class="fa fa-chevron-right rules-icon" aria-hidden="true"></i>
+                            The win multiplier starts at 1x and grows more and more as the Lucky Plane takes off.
+                        </div>
+                        <div class="aviator-paragraph-sentence">
+                            <i class="fa fa-chevron-right rules-icon" aria-hidden="true"></i>
+                            Your winnings are calculated at the multiplier at which you made a Cash Out, multiplied by
+                            your
+                            bet.
+                        </div>
+                        <div class="aviator-paragraph-sentence">
+                            <i class="fa fa-chevron-right rules-icon" aria-hidden="true"></i>
+                            Before the start of each round, our provably fair random number generator generates the
+                            multiplier at which the Lucky Plane will fly away. You can check the honesty of this
+                            generation
+                            by clicking on <img src="assets/images/provablyfair.png" alt="Provably Fair"> icon, opposite
+                            the
+                            result, in the History tab
+                        </div>
+                    </div>
+                    <div class="aviator-rules-heading mt4">
+                        GAME FUNCTIONS
+                    </div>
+                    <div class="aviator-rules-heading">
+                        Bet & Cash Out
+                    </div>
+                    <div class="aviator-paragraph-text">
+                        <div class="aviator-paragraph-sentence">
+                            <i class="fa fa-chevron-right rules-icon" aria-hidden="true"></i>
+                            Select an amount and press the “Bet” button to make a bet.
+                        </div>
+                        <div class="aviator-paragraph-sentence">
+                            <i class="fa fa-chevron-right rules-icon" aria-hidden="true"></i>
+                            You can cancel the bet by pressing the "Cancel" button if the round has not yet started.
+                        </div>
+                        <div class="aviator-paragraph-sentence">
+                            <i class="fa fa-chevron-right rules-icon" aria-hidden="true"></i>
+                            Adjust the bet size using the "+" and "-" buttons to change the bet amount. Alternatively,
+                            you
+                            can select the bet size using the preset values or enter a value manually.
+                        </div>
+                        <div class="aviator-paragraph-sentence">
+                            <i class="fa fa-chevron-right rules-icon" aria-hidden="true"></i>
+                            You can make two bets simultaneously, by adding a second bet panel. To add a second bet
+                            panel,
+                            press the plus icon, which is located on the top right corner of the first bet panel.
+                        </div>
+                        <div class="aviator-paragraph-sentence">
+                            <i class="fa fa-chevron-right rules-icon" aria-hidden="true"></i>
+                            Press the “Cash Out” button to cash out your winnings. Your win is your bet multiplied by
+                            the
+                            Cash Out multiplier.
+                        </div>
+                        <div class="aviator-paragraph-sentence">
+                            <i class="fa fa-chevron-right rules-icon" aria-hidden="true"></i>
+                            Your bet is lost, if you didn’t cash out before the plane flies away.
+                        </div>
+                    </div>
+
+                    <div class="aviator-rules-heading">Auto Play & Auto Cash Out</div>
+                    <div class="aviator-paragraph-text">
+                        <div class="aviator-paragraph-sentence">
+                            <i class="fa fa-chevron-right rules-icon" aria-hidden="true"></i>
+                            Before starting Auto Play, select the bet size you want to play with. How to do this is
+                            described in the Bet & cash out section.
+                        </div>
+                        <div class="aviator-paragraph-sentence">
+                            <i class="fa fa-chevron-right rules-icon" aria-hidden="true"></i>
+                            Auto Play is activated from the “Auto” tab in the Bet Panel, by checking the “Auto Bet”
+                            checkbox. After activation, bets will be placed automatically, but for Cash Out, you should
+                            press the “Cash Out” button in each round. If you want the bet to cash out automatically,
+                            then
+                            use the “Auto Cash Out” option
+                        </div>
+                        <div class="aviator-paragraph-sentence">
+                            <i class="fa fa-chevron-right rules-icon" aria-hidden="true"></i>
+                            Auto Cash Out is available from the “Auto” tab on the Bet panel. After activation, your bet
+                            will
+                            be automatically cashed out when it reaches the multiplier entered
+                        </div>
+                    </div>
+
+                    <div class="aviator-rules-heading">Live Bets & Statistics</div>
+                    <div class="aviator-paragraph-text">
+                        <div class="aviator-paragraph-sentence">
+                            <i class="fa fa-chevron-right rules-icon" aria-hidden="true"></i>
+                            On the left side of the game interface (or under the Bet Panel on mobile), is located the
+                            Live
+                            Bets panel. Here you can see all bets that are being made in the current round.
+                        </div>
+                        <div class="aviator-paragraph-sentence">
+                            <i class="fa fa-chevron-right rules-icon" aria-hidden="true"></i>
+                            In the “My Bets” panel you can see all of your bets and Cash Out information.
+                        </div>
+                        <div class="aviator-paragraph-sentence">
+                            <i class="fa fa-chevron-right rules-icon" aria-hidden="true"></i>
+                            In the “Top” panel, game statistics are located. You can browse wins by amount, or Cash Out
+                            multiplier, and see the biggest round multipliers.
+                        </div>
+                    </div>
+
+                    <div class="aviator-rules-heading">In-Game Chat</div>
+                    <div class="aviator-paragraph-text">
+                        <div class="aviator-paragraph-sentence">
+                            <i class="fa fa-chevron-right rules-icon" aria-hidden="true"></i>
+                            On the right side of the game interface (or after pressing the Chat icon, on the top right
+                            corner of the mobile interface), the Chat Panel is located. In Chat, you can communicate
+                            with
+                            other players. Also, information about huge wins is posted in the Chat automatically.
+                        </div>
+                    </div>
+
+                    <div class="aviator-rules-heading">Free Bets</div>
+                    <div class="aviator-paragraph-text">
+                        <div class="aviator-paragraph-sentence">
+                            <i class="fa fa-chevron-right rules-icon" aria-hidden="true"></i>
+                            You can check the status of Free Bets, from the Game Menu > Free Bets. Free Bets are awarded
+                            by
+                            the operator, or by the Rain Feature.
+                        </div>
+                    </div>
+
+                    <div class="aviator-rules-heading">Rain Feature</div>
+                    <div class="aviator-paragraph-text">
+                        <div class="aviator-paragraph-sentence">
+                            <i class="fa fa-chevron-right rules-icon" aria-hidden="true"></i>
+                            The Rain Feature drops an amount of Free Bets into the Chat. You can claim Free Bets by
+                            pressing
+                            the “Claim” button. Free Bets are awarded by the operator, or from other players. You can
+                            also
+                            drop an amount of Free Bets for other players from the “Rain” panel, by pressing the “Rain”
+                            Button on the bottom side of the Chat.
+                        </div>
+                    </div>
+
+                    <div class="aviator-rules-heading">Randomisation</div>
+                    <div class="aviator-paragraph-text">
+                        <div class="aviator-paragraph-sentence">
+                            <i class="fa fa-chevron-right rules-icon" aria-hidden="true"></i>
+                            The multiplier for each round is generated by a “Provably Fair” algorithm and is completely
+                            transparent, and 100% fair. <a href="https://aviator-next.spribegaming.com/#"> Read more
+                                about
+                                provably fair system </a>
+                        </div>
+                        <div class="aviator-paragraph-sentence">
+                            <i class="fa fa-chevron-right rules-icon" aria-hidden="true"></i>
+                            You can check and modify the Provably Fair settings from the Game menu > Provably Fair
+                            settings.
+                        </div>
+                        <div class="aviator-paragraph-sentence">
+                            <i class="fa fa-chevron-right rules-icon" aria-hidden="true"></i>
+                            You can check the fairness of each round by pressing <img
+                                src="assets/images/provablyfair.png" alt="Provably Fair"> icon, opposite the results in
+                            the “My Bets” or inside “Top” tabs.
+                        </div>
+                    </div>
+
+                    <div class="aviator-rules-heading">Game Menu</div>
+                    <div class="aviator-paragraph-text">
+                        <div class="aviator-paragraph-sentence">
+                            <i class="fa fa-chevron-right rules-icon" aria-hidden="true"></i>
+                            Access the game menu by tapping the menu button in the top right corner of the screen.
+                        </div>
+                        <div class="aviator-paragraph-sentence">
+                            <i class="fa fa-chevron-right rules-icon" aria-hidden="true"></i>
+                            Toggle the "Sound" switch to turn the game sounds on or off.
+                        </div>
+                        <div class="aviator-paragraph-sentence">
+                            <i class="fa fa-chevron-right rules-icon" aria-hidden="true"></i>
+                            Toggle the "Music" switch to turn the background music on or off.
+                        </div>
+                        <div class="aviator-paragraph-sentence">
+                            <i class="fa fa-chevron-right rules-icon" aria-hidden="true"></i>
+                            Toggle the "Animation" switch to turn the airplane animation on or off.
+                        </div>
+                        <div class="aviator-paragraph-sentence">
+                            <i class="fa fa-chevron-right rules-icon" aria-hidden="true"></i>
+                            Press the "Limits" button to view the limits for minimum and maximum bets, as well as the
+                            maximum win limit.
+                        </div>
+                        <div class="aviator-paragraph-sentence">
+                            <i class="fa fa-chevron-right rules-icon" aria-hidden="true"></i>
+                            Press the "My Bets History" button to view the history of your bets
+                        </div>
+                        <div class="aviator-paragraph-sentence">
+                            <i class="fa fa-chevron-right rules-icon" aria-hidden="true"></i>
+                            Open "Game Rules" to read detailed rules of the game
+                        </div>
+                    </div>
+
+                    <div class="aviator-rules-heading">Other</div>
+                    <div class="aviator-paragraph-text">
+                        <div class="aviator-paragraph-sentence">
+                            <i class="fa fa-chevron-right rules-icon" aria-hidden="true"></i>
+                            If the internet connection is interrupted when the bet is active, the game will auto cash
+                            out
+                            with the current multiplier, and the winning amount will be added to your balance.
+                        </div>
+                        <div class="aviator-paragraph-sentence">
+                            <i class="fa fa-chevron-right rules-icon" aria-hidden="true"></i>
+                            In the event of a malfunction of the gaming hardware/software, all affected game bets and
+                            payouts are rendered void and all affected bets are refunded.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Provably Fair Settings Pop up -->
+        <div id="aviator-settings-tab" class="aviator-popup-container">
+            <div class="aviator-settings-popup">
+                <div class="aviator-popup-header">
+                    <div class="aviator-popup-header-left">PROVABLY FAIR SETTING</div>
+                    <div id="aviator-settings-popup-close" class="aviator-popup-header-right"><i class="fa fa-times"
+                            aria-hidden="true"></i></div>
+                </div>
+                <div class="aviator-settings-popup-body">
+                    <div class="aviator-settings-popup-body-top">
+                        <div class="aviator-settings-text">
+                            This game uses Provably Fair technology to determine game result. This tool gives you
+                            ability to
+                            change your seed and check fairness of the game.
+                        </div>
+                        <div id="provably-btn" class="aviator-provably-text">
+                            <i class="fa fa-question-circle-o" aria-hidden="true"></i>
+                            What is Provably Fair
+                        </div>
+                    </div>
+                    <div class="aviator-settings-popup-body-middle">
+                        <div class="aviator-settings-popup-body-middle-heading-top">
+                            <div class="aviator-settings-popup-body-middle-heading">
+                                <img src="assets/images/client.png" alt="Client">
+                                Client (your) seed:
+                            </div>
+                            <div class="aviator-settings-text2">
+                                Round result is determined form combination of server seed and first 3 bets of the
+                                round.
+                            </div>
+                        </div>
+
+                        <div id="aviator-settings-tab1" class="aviator-settings-input-field">
+                            <label class="settings-checkbox">
+                                <input type="checkbox" id="checkbox2">
+                                <span class="checkmark"><i class="fa fa-circle" aria-hidden="true"></i></span>
+                                Random on every new game
+                            </label>
+                            <div class="aviator-server-seed-firstinput">
+                                <div class="aviator-first-input-label">Current:</div>
+                                <input id="settings-input" type="text" value="" readonly />
+                                <i id="settings-copy-btn" type="button" class="fa fa-files-o" aria-hidden="true"></i>
+                            </div>
+                        </div>
+
+                        <div id="aviator-settings-tab2" class="aviator-settings-input-field mb2 inactive">
+                            <label class="settings-checkbox">
+                                <input type="checkbox" id="checkbox3">
+                                <span class="checkmark"><i class="fa fa-circle" aria-hidden="true"></i></span>
+                                Enter manually
+                            </label>
+                            <div class="aviator-server-seed-secondinput">
+                                <div class="aviator-first-input-label">Current:</div>
+                                <input id="settings-input2" type="text" value="2MM7L9UTcjfVCV6iO9ZE-17" readonly />
+                                <i id="settings-copy-btn2" type="button" class="fa fa-files-o" aria-hidden="true"></i>
+                            </div>
+                            <button id="aviator-seed-btn" type="button" class="aviator-settings-button">CHANGE</button>
+                        </div>
+
+                    </div>
+                    <div class="aviator-settings-popup-body-bottom">
+                        <div class="aviator-settings-popup-body-bottom-top">
+                            <img src="assets/images/server.png" alt="Server">
+                            Server seed SHA256:
+                        </div>
+                    </div>
+                    <div id="serverseed" class="aviator-server-seed-input">
+                        <input type="text" value=""
+                            readonly>
+                    </div>
+
+                </div>
+                <div class="aviator-avatar-popup-footer">
+                    <div class="aviator-settings-footer-text">
+                        You can check fairness of each bet from bet history.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Alert Pop up -->
+        <div class="alert-popup" id="alertPopup">
+            <span class="alert-message"></span>
+            <button id="close-alert" class="close-btn"><i class="fa fa-times" aria-hidden="true"></i></button>
+        </div>
+
+        <!-- Change Seed Pop up -->
+        <div id="aviator-seed-tab" class="aviator-popup-container2">
+            <div class="aviator-seed-popup">
+                <div class="aviator-popup-header">
+                    <div class="aviator-popup-header-left">CHANGE SEED</div>
+                    <div id="aviator-seed-popup-close" class="aviator-popup-header-right"><i class="fa fa-times"
+                            aria-hidden="true"></i></div>
+                </div>
+                <div class="aviator-seed-popup-body">
+                    <div class="aviator-seed-popup-body-top">
+                        <div class="aviator-seed-popup-body-top-text">
+                            Enter new seed:
+                        </div>
+                        <input type="text" class="aviator-seed-input" value="2MM7L9UTcjfVCV6iO9ZE">
+                    </div>
+                    <div class="aviator-seed-popup-body-middle">
+                        <button class="aviator-seed-btns info-btn">RANDOM</button>
+                    </div>
+                    <div class="aviator-seed-popup-body-bottom">
+                        <button class="aviator-seed-btns success-btn">SAVE</button>
+                        <button id="aviator-seed-popup-close" class="aviator-seed-btns danger-btn">CANCEL</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Provably Fair Pop up -->
+        <div id="aviator-provably-tab" class="aviator-popup-container">
+            <div class="aviator-provably-popup">
+                <div class="aviator-provably-header">
+                    <div class="aviator-popup-header-left">WHAT IS PROVABLY FAIR?</div>
+                    <div id="aviator-provably-popup-close" class="aviator-popup-header-right"><i class="fa fa-times"
+                            aria-hidden="true"></i></div>
+                </div>
+                <div class="aviator-provably-popup-body">
+                    <div class="aviator-provably-popup-body-header">
+                        <img src="assets/images/provablyfair.png" alt="Provably Fair">
+                        Provably Fair - 100% FAIR GAME
+                    </div>
+
+                    <div class="aviator-provably-popup-body-section1">
+                        "Aviator" is based on cryptographic technology called "Provably Fair". This technology
+                        guarantees
+                        100% fairness of game result. With this technology, it's impossible for any third party to
+                        interfere
+                        in game process.
+                    </div>
+                    <div class="aviator-provably-popup-body-title">
+                        HOW IT WORKS
+                    </div>
+                    <div class="aviator-provably-popup-body-subtitle">
+                        Quick explanation:
+                    </div>
+                    <div class="avitor-provably-body-text">
+                        Result of each round (Game's "Fly away" multiplier ) is not generated on our servers. It's
+                        generated
+                        with help of round players and is fully transparent. This way, it's impossible for anyone to
+                        manipulate game output. Also, anyone can check and confirm game fairness
+                    </div>
+                    <div class="aviator-provably-popup-body-subtitle">
+                        More information:
+                    </div>
+                    <div class="avitor-provably-body-text">
+                        Round result is generated from four independent participants of the round: game operator and
+                        first 3
+                        betters of the round. Operator is generating server seed (random 16 symbols). Hashed version of
+                        this
+                        server seed is available publicly before round starts (In user menu, check "Provably Fair
+                        Settings"
+                        and then "Next server seed SHA256") Client seed is generated on the side of each player and when
+                        round starts first 3 betters are participating in generating round result.
+                    </div>
+                    <div class="avitor-provably-body-text">
+                        When round starts, game merges server seed with three client seeds. From merged symbols is
+                        generated
+                        SHA512 hash, and from this hash - game result.
+                    </div>
+                    <div class="aviator-provably-body-img">
+                        <img src="assets/images/topprovablystep.png" alt="Provably Fair">
+                        <img src="assets/images/bottomprovablystep.png" alt="Provably Fair">
+                    </div>
+                    <div class="aviator-provably-popup-body-title">
+                        HOW TO CHECK
+                    </div>
+                    <div class="avitor-provably-body-text">
+                        - You can check fairness of each round from game history, by clicking on green icon.
+                    </div>
+                    <div class="avitor-provably-body-text">
+                        - In opened window, you will see server seed, 3 pair of players seeds, combined hash and round
+                        result.
+                    </div>
+                    <div class="avitor-provably-body-text">
+                        - Hashed version of next rounds server seed is available publicly in settings window (In user
+                        menu,
+                        check "Provably Fair Settings" and then "Next server seed SHA256"). You can also change your
+                        client
+                        seed here.
+                    </div>
+                    <div class="avitor-provably-body-text">
+                        - If you want to participate in round result generation, make sure you are between first 3
+                        players
+                        who make bet in that round.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script src="app.js"></script>
+        <script src="main.js"></script>
+        <script src="aviator.js"></script>
+
+    </div>
+</body>
+
+</html>

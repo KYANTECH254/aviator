@@ -1,0 +1,110 @@
+:root {
+    --primary-color: #555;
+    --secondary-color: #2ecc71;
+    --text-color: #888;
+    --primary-green: rgb(16, 227, 16);
+    --primary-objects-black: #00000076;
+    --primary-grey-color: #222;
+    --secondary-grey-color: #5555554e;
+}
+
+@media (max-width: 480px) {
+    .aviator-provably-body-img {
+        flex: 0 0 90%;
+    }
+
+    .aviator-provably-body-img img {
+        width: 80%;
+    }
+
+    .aviator-round-history-header-2,
+    .aviator-btns-container,
+    .aviator-game-canva {
+        margin-left: 5px;
+        margin-right: 5px;
+    }
+
+    .aviator-heading-1 {
+        display: none;
+    }
+
+    .aviator-mobheading-1 {
+        background-color: var(--primary-grey-color);
+        color: var(--text-color);
+        border-radius: 50%;
+        width: 20px;
+        height: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-left: -10px;
+        font-size: 14px;
+        font-weight: 300;
+        cursor: pointer;
+    }
+
+    .aviator-round-history {
+        margin-left: 5px;
+    }
+    .aviator-chat-section {
+        position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        background-color: var(--primary-objects-black);
+        display: flex;
+        flex-direction: column;
+        overflow: auto;
+        z-index: 99;
+        display: none;
+        transition: width 1s;
+    }
+    .aviator-chat-section-body {
+        padding-top: 9%;
+        overflow: auto;
+    }
+    .aviator-btn-top-container-btns {
+        margin-left: 25%;
+    }
+    .aviator-bets-section {
+        top: 30px;
+        transition: width 0.3s;
+        min-width: calc(415px - 20px);
+    }
+}
+
+@media (min-width: 480px) {
+    .aviator-bets-section {
+        top: 30px;
+    }
+}
+
+@media (max-width: 768px) {
+    .aviator-provably-body-img {
+        flex: 0 0 70%;
+    }
+
+    .aviator-provably-body-img img {
+        width: 70%;
+    }
+}
+
+@media (max-width: 900px) {
+    .aviator-bets-section {
+        width: calc(100% - 20px);
+        margin: 10px;
+    }
+    .aviator-game-canva {
+        margin: 5px;
+    }
+}
+
+@media (min-width: 768px) {
+    .aviator-bets-section{
+        top: 45px;
+    }
+}
+
+

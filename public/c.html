@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plane Animation with Smooth Trail</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+            background-color: #1c1c1c;
+        }
+
+        #plane {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/Fighter_plane_silhouette.svg/1024px-Fighter_plane_silhouette.svg.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+        }
+
+        svg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 0;
+            width: 100vw;
+            height: 100vh;
+        }
+
+        #trailPath {
+            stroke: red;           /* Trail color */
+            stroke-width: 5px;
+            fill: transparent;     /* No fill for the trail path */
+        }
+
+        #fillPath {
+            fill: rgba(255, 0, 0, 0.3); /* Transparent red fill */
+        }
+    </style>
+</head>
+<body>
+    <!-- The SVG elements for the trail and fill -->
+    <svg>
+        <path id="trailPath" d="" />
+        <path id="fillPath" d="" />
+    </svg>
+
+    <!-- The plane element -->
+    <div id="plane"></div>
+
+    <script>
+        function animateFlyingPlane() {
+            const plane = document.getElementById('plane');
+            const trailPath = document.getElementById('trailPath');
+            const fillPath = document.getElementById('fillPath');
+
+            // Initial plane position
+            let planeX = 35;
+            let planeY = 35;
+
+            // Path for the trail and fill
+            let trailD = `M ${planeX} ${window.innerHeight - planeY + 35}`; // Starting point for trail
+            let fillD = `M ${planeX} ${window.innerHeight - planeY + 35}`;  // Starting point for fill
+
+            // Constants for animation behavior
+            const canvasWidth = window.innerWidth;
+            const canvasHeight = window.innerHeight;
+            const targetLiftStartX = canvasWidth * 0.2;
+            const targetX = canvasWidth * 0.75;
+            const maxHeight = 160;
+
+            function getExponentialY(x) {
+                const normalizedX = (x - targetLiftStartX) / (targetX - targetLiftStartX);
+                return 35 + Math.pow(normalizedX, 2) * (maxHeight - 35); // Exponential-like growth
+            }
+
+            function animate() {
+                if (planeX < targetX) {
+                    planeX += 2;
+
+                    if (planeX < targetLiftStartX) {
+                        planeY = 35; // Stay flat until reaching the lift-off point
+                    } else if (planeX >= targetLiftStartX && planeX <= targetX) {
+                        planeY = getExponentialY(planeX);
+                    }
+
+                    // Update the plane's position
+                    plane.style.left = planeX + 'px';
+                    plane.style.bottom = planeY + 'px';
+
+                    // Update the trail path
+                    trailD += ` L ${planeX} ${canvasHeight - planeY + 35}`; // Draw line from previous to new point
+                    if (planeY > 35) {
+                        fillD += ` L ${planeX} ${canvasHeight - planeY + 35}`; // Add point to fill path only when above 35px
+                    }
+
+                    // Update the paths' data
+                    trailPath.setAttribute('d', trailD);
+                    fillPath.setAttribute('d', fillD + ` L ${planeX} ${canvasHeight} L 35 ${canvasHeight} Z`); // Fill the area under the curve
+                }
+
+                // Check if the plane is descending, if yes, regulate the trail and fill accordingly
+                if (planeY < (canvasHeight - 35) && planeY > 35) {
+                    fillD += ` L ${planeX} ${canvasHeight - planeY + 35}`; // Update fill on descent
+                } else if (planeY <= 35) {
+                    fillD = `M ${planeX} ${canvasHeight} L ${planeX} ${canvasHeight} L 35 ${canvasHeight} Z`; // Reset fill when at base
+                }
+
+                requestAnimationFrame(animate);
+            }
+
+            animate();
+        }
+
+        animateFlyingPlane();
+    </script>
+</body>
+</html>
